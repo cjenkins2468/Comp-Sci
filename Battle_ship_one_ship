@@ -1,0 +1,41 @@
+import random
+def random_ship():
+    boaty = random.randint(1,5)
+    boatx = random.randint(1,5)
+    return [boatx,boaty]
+def printboard(board):
+    line = ""
+    for i in board:
+        line = ""
+        for j in i: # this makes it so that it makes it print the board in a grid
+            #print new row 
+            line = line + j + " "
+        print(line)
+def computer_ship_function(computer_board):
+    random_ships = random_ship()
+    boatx = random_ships[0]
+    boaty = random_ships [1]
+    if boaty <= 1 or boaty >= 5:
+        return False
+    if boatx <= 1 or boatx >= 5:
+        return False
+    else:
+        computer_board[boatx][boaty] = ' B '
+        return computer_board
+def random_board_switching(computer_board):
+    check = computer_ship_function(computer_board)
+    if check == False:
+        random_board_switching(computer_board)
+    else:
+        board = check
+        printboard(board)
+
+def main():
+    player_attack_board = [["   1 "," 2 "," 3 "," 4 "," 5 "],["1"," 0 "," 0 "," 0 "," 0 "," 0 "],["2"," 0 "," 0 "," 0 "," 0 "," 0 "],["3"," 0 "," 0 "," 0 "," 0 "," 0 "],["4"," 0 "," 0 "," 0 "," 0 "," 0 "],["5"," 0 "," 0 "," 0 "," 0 "," 0 "]]
+    player_board = [["   1 "," 2 "," 3 "," 4 "," 5 "],["1"," - "," - "," - "," - "," - "],["2"," - "," - "," - "," - "," - "],["3"," - "," - "," - "," - "," - "],["4"," - "," - "," - "," - "," - "],["5"," - "," - "," - "," - "," - "]]
+    computer_attack_board = [["   1 "," 2 "," 3 "," 4 "," 5 "],["1"," 0 "," 0 "," 0 "," 0 "," 0 "],["2"," 0 "," 0 "," 0 "," 0 "," 0 "],["3"," 0 "," 0 "," 0 "," 0 "," 0 "],["4"," 0 "," 0 "," 0 "," 0 "," 0 "],["5"," 0 "," 0 "," 0 "," 0 "," 0 "]]
+    computer_board = [[" " ," 1 "," 2 "," 3 "," 4 "," 5 "],["1"," - "," - "," - "," - "," - "],["2"," - "," - "," - "," - "," - "],["3"," - "," - "," - "," - "," - "],["4"," - "," - "," - "," - "," - "],["5"," - "," - "," - "," - "," - "]]
+    #printboard(player_attack_board)
+    #printboard(player_board)
+    random_board_switching(computer_board)
+main()

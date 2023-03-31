@@ -1,4 +1,3 @@
-@@ -0,0 +1,101 @@
 def print_board(board): # board printing funtion
     for i in board: # this makes it so that it makes it print the board in a 3x3 grid
         print(i) #finally prints it

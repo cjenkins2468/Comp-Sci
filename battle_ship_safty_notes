@@ -1,0 +1,40 @@
+def random_ship():
+    boaty = random.randint(1,5)
+    boatx = random.randint(1,5)
+    first_boatx = boatx
+    first_boaty = boaty
+    y = random.randint(-1,1)
+    x = random.randint(-1,1)
+    boaty = boaty + y
+    boatx = boatx + x
+    return [first_boatx,first_boaty,boatx,boaty]
+def printboard(board):
+    line = ""
+    for i in board:
+        line = ""
+        for j in i: # this makes it so that it makes it print the board in a grid
+            #print new row 
+            line = line + j + " "
+        print(line)
+def computer_ship_function(computer_board):
+    random_ships = random_ship()
+    first_boatx = random_ships[0] 
+    first_boaty = random_ships[1]
+    boatx = random_ships[2]
+    boaty = random_ships [3]
+    if boaty <= 1 or boaty >= 5:
+        computer_ship_function(computer_board)
+    if boatx <= 1 or boatx >= 5:
+        computer_ship_function(computer_board)
+    if (first_boatx,first_boaty) == (boatx,boaty):
+        computer_ship_function(computer_board)
+    if first_boaty != boaty:
+        if first_boatx != boatx:
+            computer_ship_function(computer_board)
+    if first_boatx != boatx:
+        if first_boaty != boaty:
+            computer_ship_function(computer_board)
+    computer_board[random_ships[0]][random_ships[1]] = ' B '
+    computer_board[random_ships[2]][random_ships[3]] = ' B '
+    printboard(computer_board)
+    print("done")

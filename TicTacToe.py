@@ -1,4 +1,3 @@
-
 def print_board(board): # board printing funtion
     for i in board: # this makes it so that it makes it print the board in a 3x3 grid
         print(i) #finally prints it
@@ -12,7 +11,7 @@ def player1(player1_play,board):# player 1 replacing function
         board[player1_row][player1_col] = 'x' # replaceing!
         return True #making sure it is in the right format
     except:  #catch
-        print("cannot play that must be (_,_)") #telling what they are doing wrong
+        print("cannot play that must be (Row,Column)") #telling what they are doing wrong
 def player2(player2_play,board):#player 2 replacing function
     try:    #breaks if not in right format meaning I can make a try catch
         player1_row = int(player2_play.split(",")[0])   # getting the row
@@ -22,7 +21,7 @@ def player2(player2_play,board):#player 2 replacing function
         board[player1_row][player1_col] = 'o'# replaceing!
         return True #making sure it is in the right format
     except: # catch
-        print("cannot play that must be (_,_)") #telling what they are doing wrong
+        print("cannot play that must be (Row,Column)") #telling what they are doing wrong
 def checkSpot(spotcheck,board): # function to check if someone alrighty played
     spotRow = int(spotcheck.split(",")[0])-1 # getting row and collem 
     spotCol = int(spotcheck.split(",")[1])-1 #getting row and collem 
@@ -50,9 +49,9 @@ def end(board,a): # checking if anyone won!
 def player_playing(board,a): # playing loop 
     win = False # stating the loop varible
     if a == '1':# checking whos playing
-        player1_play = input("player "+ a +", what do you want to play: (_,_)  \n") # asking for input (_,_)
+        player1_play = input("player "+ a +", what do you want to play: (Row,Column)  \n") # asking for input (_,_)
     elif a == '2': # checking whos playing 
-        player2_play = input("player "+ a +", what do you want to play: (_,_)  \n") # asking for input (_,_)
+        player2_play = input("player "+ a +", what do you want to play: (Row,Column)  \n") # asking for input (_,_)
     if a == '1': # checking whos playing
         if checkSpot(player1_play,board): # spot checking (calling)
             player1(player1_play,board) # replacing
@@ -80,16 +79,21 @@ def player_playing(board,a): # playing loop
 
 def gameloop(board): #full game loop until win
     game = True # loop
-    while game == True: #while loop
-        if player_playing(board,'1') == True: # if player 1 played...
-            if end(board,'x'): # end function to see if they won
-                print ("player 1 wins!.... restarting") 
-                main() # won 
-            elif player_playing(board,'2') == True: # if didn't win then 
-                if end(board,'o'): # end function to see if they won
-                    print ("player 2 wins!.... restarting") # won
+    try:
+        while game == True: #while loop
+            if player_playing(board,'1') == True: # if player 1 played...
+                if end(board,'x'): # end function to see if they won
+                    print ("player 1 wins!.... restarting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") 
                     main() # won 
-                gameloop(board) #LOOOOOOPPPPINGGGGGGG if no one won!
+                elif player_playing(board,'2') == True: # if didn't win then 
+                    if end(board,'o'): # end function to see if they won
+                        print ("player 2 wins!.... restarting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") # won
+                        main() # won 
+                    gameloop(board) #LOOOOOOPPPPINGGGGGGG if no one won!
+    except:
+        print("wrong input restarting...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        main()
+
 def main(): # main
     board = [['-','-','-'],['-','-','-'],['-','-','-']]  # making the board list so I can print it and replace in individual places
     print_board(board) # calling the print board function
