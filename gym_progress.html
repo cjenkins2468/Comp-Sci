@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<style>
+body{
+  background-image: url('tren_twins.jpg');
+  background-size:auto;
+}
+</style>
+
+<h1><center><span style="background-color:#00FEFE">Gym progress tracker</span></center></h1>
+
+
+<p><center><span style="background-color:#00FEFE">This is the gym progress recorder, please enter the following:</span></center></p>
+<head>
+}
+</style>
+</head>
+<body><center>
+<h1><span style="background-color:#00FEFE">Secret password for 'TrenClub'</span>
+<table>
+  <tr>
+    <th><span style="background-color:#00FEFE">User Name:</span></th>
+    <th><input type="text" id="user_name" name="user_name" required></th>
+  </tr>
+  <tr>
+    <td><span style="background-color:#00FEFE">Password:</span></td>
+    <td><input type="text" id="user_password" name="password" required></td>
+  </tr>
+</table>
+</center></body>
+
+<body><center>
+<button onclick="submit()">
+        <img src="https://i1.sndcdn.com/artworks-RePptKgdRhJKeio1-Vg9mrw-t500x500.jpg" alt="Trulli" width="500" height="333"/>
+      </button>
+
+<script>
+
+    function submit()
+    {
+    var audio = new Audio('IMG_7130.mp3');
+    var checker = 0;
+    var id = document.getElementById('user_name').value;
+    if (checker == 0)
+    {
+      audio.play();
+    }
+    setTimeout(() => {
+    if (id == ("trentwins"))
+    {
+      checker = 1;
+    }
+    var pw = document.getElementById('user_password').value;
+    if (checker == 1)
+    {
+      if (pw = ("are the best"))
+      {
+        alert("MOVING TO SECRET TREN CLUB LOCATION\n loading...")
+        window.location.replace("https://www.youtube.com/channel/UCRBALvAmmqxBX4qiDSpV3PA");
+        
+      }
+    }
+    }, 4000);
+    
+    var snd = new Audio("IMG_7130.mp3"); 
+    }
+</script>
+</center></body>
+</html>
